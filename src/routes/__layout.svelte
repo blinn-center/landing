@@ -1,11 +1,9 @@
 <script lang="ts">
 	import {
 		Content,
-		Grid,
 		Header,
 		HeaderGlobalAction,
 		HeaderUtilities,
-		Row,
 		SideNav,
 		SideNavItems,
 		SideNavLink,

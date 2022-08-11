@@ -24,8 +24,7 @@
 		Grid,
 		InlineNotification,
 		NotificationActionButton,
-		Row,
-		Tile
+		Row
 	} from 'carbon-components-svelte';
 	import PreviewEventsTitle from '$lib/events/PreviewEventsTitle.svelte';
 	import type { PreviewEvent } from '$lib/events/types';
