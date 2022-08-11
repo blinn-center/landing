@@ -35,7 +35,7 @@
 </script>
 
 <h1>Blinn Center</h1>
-<h2>A student-run website focused on improving Blinn College's online services</h2>
+<h2>Improved online services for Blinn College students</h2>
 <InlineNotification
 	lowContrast
 	hideCloseButton
