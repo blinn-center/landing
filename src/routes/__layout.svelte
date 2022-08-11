@@ -49,7 +49,7 @@
 <SideNav bind:isOpen={isSideNavOpen}>
 	<SideNavItems>
 		<SideNavLink href="/" text="Home" />
-		<SideNavLink href="/governance" text="Governance" />
+		<SideNavLink href="/about" text="About Blinn Center" />
 	</SideNavItems>
 </SideNav>
 
