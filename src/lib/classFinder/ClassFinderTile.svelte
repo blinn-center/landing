@@ -1,12 +1,17 @@
 <script lang="ts">
+	import MarkdownParagraph from '$lib/MarkdownParagraph.svelte';
 	import { TextInput, Tile } from 'carbon-components-svelte';
 </script>
 
 <Tile>
 	<h2>Rapid Class Finder</h2>
 	<div class="description">
-		<p>Find the class and section you're looking for in the blink of an eye!</p>
-		<p>Coming soon... hopefully</p>
+		<MarkdownParagraph>
+			Find the class and section you're looking for in the blink of an eye!
+		</MarkdownParagraph>
+		<MarkdownParagraph>
+			Coming soon, pending finding a good way to scrape/aggregate the data
+		</MarkdownParagraph>
 	</div>
 	<TextInput
 		labelText="Search query"

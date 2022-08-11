@@ -1,6 +1,7 @@
 <script lang="ts">
+	import MarkdownLink from '$lib/MarkdownLink.svelte';
+	import MarkdownParagraph from '$lib/MarkdownParagraph.svelte';
 	import {
-		Link,
 		StructuredList,
 		StructuredListBody,
 		StructuredListCell,
@@ -15,11 +16,11 @@
 
 <Tile>
 	<h2>Upcoming Events</h2>
-	<p>
-		Sourced from the <Link size="lg" href="https://www.blinn.edu/calendar/index.html">
+	<MarkdownParagraph>
+		Sourced from the <MarkdownLink href="https://www.blinn.edu/calendar/index.html">
 			Blinn Academic Calendar
-		</Link>
-	</p>
+		</MarkdownLink>
+	</MarkdownParagraph>
 	<StructuredList>
 		<StructuredListHead>
 			<StructuredListRow head>
