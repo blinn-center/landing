@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {
+		Link,
 		StructuredList,
 		StructuredListBody,
 		StructuredListCell,
@@ -15,7 +16,9 @@
 <Tile>
 	<h2>Upcoming Events</h2>
 	<p>
-		Sourced from the <a href="https://www.blinn.edu/calendar/index.html">Blinn Academic Calendar</a>
+		Sourced from the <Link href="https://www.blinn.edu/calendar/index.html">
+			Blinn Academic Calendar
+		</Link>
 	</p>
 	<StructuredList>
 		<StructuredListHead>
