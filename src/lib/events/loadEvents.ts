@@ -1,39 +1,9 @@
 import type { LoadEvent } from '@sveltejs/kit';
 import ICAL from 'ical.js';
+import { TAGS } from './tags';
 import type { PreviewEvent, PreviewEventTag } from './types';
 
 export const ICAL_FEED = 'http://www.calendarwiz.com/CalendarWiz_iCal.php?crd=blinncollegeacademic';
-
-const TAGS: { search: string; tag: PreviewEventTag }[] = [
-	{
-		search: 'Spring',
-		tag: {
-			type: 'cyan',
-			text: 'Spring'
-		}
-	},
-	{
-		search: 'Summer',
-		tag: {
-			type: 'blue',
-			text: 'Summer'
-		}
-	},
-	{
-		search: 'Fall',
-		tag: {
-			type: 'green',
-			text: 'Fall'
-		}
-	},
-	{
-		search: 'Winter',
-		tag: {
-			type: 'teal',
-			text: 'Winter'
-		}
-	}
-];
 
 function getTags(summary: string): PreviewEventTag[] {
 	const tags: PreviewEventTag[] = [];

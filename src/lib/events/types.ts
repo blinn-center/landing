@@ -11,6 +11,7 @@ export type TagType =
 	| 'warm-gray'
 	| 'high-contrast'
 	| 'outline'
+	| 'maroon'
 	| null;
 
 export interface PreviewEventTag {

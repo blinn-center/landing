@@ -1,4 +1,5 @@
 <script lang="ts">
+	import MaroonTag from '$lib/components/MaroonTag.svelte';
 	import MarkdownLink from '$lib/MarkdownLink.svelte';
 	import MarkdownParagraph from '$lib/MarkdownParagraph.svelte';
 	import {
@@ -31,7 +32,7 @@
 		<StructuredList>
 			<StructuredListHead>
 				<StructuredListRow head>
-					<StructuredListCell head>Term/Semester</StructuredListCell>
+					<StructuredListCell head>Category/Term</StructuredListCell>
 					<StructuredListCell head>Event</StructuredListCell>
 					<StructuredListCell head>Date</StructuredListCell>
 				</StructuredListRow>
@@ -41,7 +42,13 @@
 					<StructuredListRow label for="event-{event.id}">
 						<StructuredListCell>
 							{#each event.tags as tag}
-								<div><Tag type={tag.type ?? undefined}>{tag.text}</Tag></div>
+								<div class="tag">
+									{#if tag.type === 'maroon'}
+										<MaroonTag>{tag.text}</MaroonTag>
+									{:else}
+										<Tag type={tag.type ?? undefined}>{tag.text}</Tag>
+									{/if}
+								</div>
 							{/each}
 						</StructuredListCell>
 						<StructuredListCell>{event.event}</StructuredListCell>
@@ -64,5 +71,10 @@
 	.preview-events-tile {
 		max-height: 500px;
 		overflow-y: auto;
+	}
+
+	.tag :global(.bx--tag) {
+		width: 100%;
+		text-align: center;
 	}
 </style>
