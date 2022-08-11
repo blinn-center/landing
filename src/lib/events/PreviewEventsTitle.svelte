@@ -16,7 +16,7 @@
 <Tile>
 	<h2>Upcoming Events</h2>
 	<p>
-		Sourced from the <Link href="https://www.blinn.edu/calendar/index.html">
+		Sourced from the <Link size="lg" href="https://www.blinn.edu/calendar/index.html">
 			Blinn Academic Calendar
 		</Link>
 	</p>
