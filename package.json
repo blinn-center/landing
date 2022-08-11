@@ -1,16 +1,32 @@
 {
-	"name": "landing",
+	"name": "@blinn-center/landing",
 	"version": "0.0.1",
+	"description": "Blinn Center's landing page",
+	"homepage": "https://blinn.center",
+	"bugs": {
+		"url": "https://github.com/blinn-center/landing/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/blinn-center/landing.git"
+	},
+	"license": "AGPL-3.0",
+	"author": {
+		"name": "Piper McCorkle",
+		"email": "piper@blinn.center",
+		"url": "https://piperswe.me"
+	},
+	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
 		"build": "vite build",
-		"package": "svelte-kit package",
-		"preview": "vite preview",
-		"test": "playwright test",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+		"dev": "vite dev",
+		"format": "prettier --write --plugin-search-dir=. .",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint .",
-		"format": "prettier --write --plugin-search-dir=. ."
+		"package": "svelte-kit package",
+		"preview": "vite preview",
+		"test": "playwright test"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.22.2",
@@ -27,9 +43,11 @@
 		"eslint": "^8.16.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^4.0.0",
+		"ical.js": "^1.5.0",
 		"mdsvex": "^0.10.6",
 		"prettier": "^2.6.2",
 		"prettier-plugin-svelte": "^2.7.0",
+		"sass": "^1.54.4",
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.7.1",
 		"svelte-preprocess": "^4.10.6",
@@ -37,9 +55,5 @@
 		"typescript": "^4.7.4",
 		"vite": "^3.0.0"
 	},
-	"type": "module",
-	"dependencies": {
-		"ical.js": "^1.5.0",
-		"sass": "^1.54.4"
-	}
+	"packageManager": "yarn@3.2.2"
 }
