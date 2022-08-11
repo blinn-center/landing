@@ -43,7 +43,7 @@
 	subtitle="Blinn Center is an unofficial, student-run website and has no formal affiliation with Blinn College."
 >
 	<svelte:fragment slot="actions">
-		<NotificationActionButton href="/governance">Learn more</NotificationActionButton>
+		<NotificationActionButton href="/about">Learn more</NotificationActionButton>
 	</svelte:fragment>
 </InlineNotification>
 
