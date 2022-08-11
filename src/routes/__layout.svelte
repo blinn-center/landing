@@ -29,6 +29,8 @@
 	}
 </script>
 
+<svelte:head><title>Blinn Center</title></svelte:head>
+
 <Theme bind:theme persist persistKey="__carbon-theme" />
 
 <Header company="Blinn Center" platformName="Landing" bind:isSideNavOpen>
