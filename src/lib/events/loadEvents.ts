@@ -30,12 +30,18 @@ function getPreviewEventsFromData(data: any[], maxEvents: number): PreviewEvent[
 	return limited.map(transformEventToPreview);
 }
 
+// https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout
+// missing in TypeScript: https://github.com/microsoft/TypeScript/issues/48003
+declare var AbortSignal: {
+	timeout(time: number): AbortSignal;
+};
+
 export async function loadPreview(
 	fetch: LoadEvent['fetch'],
 	maxEvents: number
 ): Promise<{ status: number; previewEvents: PreviewEvent[] }> {
 	const url = 'http://www.calendarwiz.com/CalendarWiz_iCal.php?crd=blinncollegeacademic';
-	const response = await fetch(url);
+	const response = await fetch(url, { signal: AbortSignal.timeout(5000) });
 	if (!response.ok) {
 		return {
 			status: response.status,
