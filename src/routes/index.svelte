@@ -2,7 +2,7 @@
 	import type { LoadEvent } from '@sveltejs/kit';
 
 	export async function load({ fetch }: LoadEvent) {
-		const eventsResponse = await fetch('/events/preview');
+		const eventsResponse = await fetch('/events/preview?count=5');
 		if (!eventsResponse.ok) {
 			return {
 				status: eventsResponse.status
@@ -31,6 +31,21 @@
 	import ClassFinderTile from '$lib/classFinder/ClassFinderTile.svelte';
 
 	export let previewEvents: PreviewEvent[];
+
+	let loadingEvents: boolean = false;
+
+	async function fetchMoreEvents() {
+		loadingEvents = true;
+		const currentCount = previewEvents.length;
+		const newCount = currentCount + 5;
+		const eventsResponse = await fetch(`/events/preview?count=${newCount}`);
+		if (!eventsResponse.ok) {
+			loadingEvents = false;
+			throw new Error('Failed to fetch more events');
+		}
+		({ previewEvents } = await eventsResponse.json());
+		loadingEvents = false;
+	}
 </script>
 
 <h1>Blinn Center</h1>
@@ -49,7 +64,7 @@
 <Grid>
 	<Row>
 		<Column>
-			<PreviewEventsTitle {previewEvents} />
+			<PreviewEventsTitle {previewEvents} {fetchMoreEvents} loading={loadingEvents} />
 		</Column>
 		<Column>
 			<ClassFinderTile />

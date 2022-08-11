@@ -1,6 +1,50 @@
 import type { LoadEvent } from '@sveltejs/kit';
 import ICAL from 'ical.js';
-import type { PreviewEvent } from './types';
+import type { PreviewEvent, PreviewEventTag } from './types';
+
+export const ICAL_FEED = 'http://www.calendarwiz.com/CalendarWiz_iCal.php?crd=blinncollegeacademic';
+
+const TAGS: { search: string; tag: PreviewEventTag }[] = [
+	{
+		search: 'Spring',
+		tag: {
+			type: 'cyan',
+			text: 'Spring'
+		}
+	},
+	{
+		search: 'Summer',
+		tag: {
+			type: 'blue',
+			text: 'Summer'
+		}
+	},
+	{
+		search: 'Fall',
+		tag: {
+			type: 'green',
+			text: 'Fall'
+		}
+	},
+	{
+		search: 'Winter',
+		tag: {
+			type: 'teal',
+			text: 'Winter'
+		}
+	}
+];
+
+function getTags(summary: string): PreviewEventTag[] {
+	const tags: PreviewEventTag[] = [];
+	const lowercase = summary.toLowerCase();
+	for (const tag of TAGS) {
+		if (lowercase.includes(tag.search.toLowerCase())) {
+			tags.push(tag.tag);
+		}
+	}
+	return tags;
+}
 
 function transformEventToPreview(event: ICAL.Event): PreviewEvent {
 	const startDate = event.startDate
@@ -12,10 +56,9 @@ function transformEventToPreview(event: ICAL.Event): PreviewEvent {
 	const date = startDate === endDate ? startDate : `${startDate} - ${endDate}`;
 	return {
 		id: event.uid,
-		category: event.component.getFirstPropertyValue('categories'),
 		event: event.summary,
 		date,
-		color: event.color
+		tags: getTags(event.summary)
 	};
 }
 
@@ -40,8 +83,7 @@ export async function loadPreview(
 	fetch: LoadEvent['fetch'],
 	maxEvents: number
 ): Promise<{ status: number; previewEvents: PreviewEvent[] }> {
-	const url = 'http://www.calendarwiz.com/CalendarWiz_iCal.php?crd=blinncollegeacademic';
-	const response = await fetch(url, { signal: AbortSignal.timeout(5000) });
+	const response = await fetch(ICAL_FEED, { signal: AbortSignal.timeout(5000) });
 	if (!response.ok) {
 		return {
 			status: response.status,
