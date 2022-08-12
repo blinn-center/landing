@@ -48,6 +48,7 @@
 	<SideNavItems>
 		<SideNavLink href="/" text="Home" />
 		<SideNavLink href="/about" text="About Blinn Center" />
+		<SideNavLink href="/classfinder" text="Rapid Class Finder" />
 	</SideNavItems>
 </SideNav>
 
