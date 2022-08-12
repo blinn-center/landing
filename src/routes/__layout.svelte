@@ -31,7 +31,7 @@
 
 <Theme bind:theme persist persistKey="__carbon-theme" />
 
-<Header company="Blinn Center" platformName="Landing" bind:isSideNavOpen>
+<Header company="Blinn Center" platformName="Landing" persistentHamburgerMenu bind:isSideNavOpen>
 	<svelte:fragment slot="skip-to-content">
 		<SkipToContent />
 	</svelte:fragment>

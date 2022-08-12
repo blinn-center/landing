@@ -5,14 +5,19 @@
 		const eventsResponse = await fetch('/events/preview?count=5');
 		if (!eventsResponse.ok) {
 			return {
-				status: eventsResponse.status
+				status: 200,
+				props: {
+					havePreviewEvents: false,
+					previewEvents: []
+				}
 			};
 		}
 		const { previewEvents } = await eventsResponse.json();
 		return {
 			status: eventsResponse.status,
 			props: {
-				previewEvents
+				previewEvents,
+				havePreviewEvents: true
 			}
 		};
 	}
@@ -30,6 +35,7 @@
 	import type { PreviewEvent } from '$lib/events/types';
 	import ClassFinderTile from '$lib/classFinder/ClassFinderTile.svelte';
 
+	export let havePreviewEvents: boolean;
 	export let previewEvents: PreviewEvent[];
 
 	let loadingEvents: boolean = false;
@@ -64,7 +70,12 @@
 <Grid>
 	<Row>
 		<Column>
-			<PreviewEventsTitle {previewEvents} {fetchMoreEvents} loading={loadingEvents} />
+			<PreviewEventsTitle
+				{havePreviewEvents}
+				{previewEvents}
+				{fetchMoreEvents}
+				loading={loadingEvents}
+			/>
 		</Column>
 		<Column>
 			<ClassFinderTile />
